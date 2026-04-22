@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Segregation & Recycling System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>EcoSort AI</h1>
+            <p>Upload an image of waste to get classification and recycling suggestions.</p>
+        </header>
+        
+        <main>
+            <div class="upload-section" id="drop-area">
+                <input type="file" id="file-input" accept="image/*" hidden>
+                <div class="upload-content" id="upload-content">
+                    <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    <p>Drag & Drop an image here or <span class="browse-link" id="browse-btn">Browse</span></p>
+                </div>
+                <img id="image-preview" class="hidden" alt="Preview">
+            </div>
+
+            <button id="classify-btn" class="hidden" disabled>Classify Waste</button>
+            
+            <div id="loading" class="hidden">
+                <div class="spinner"></div>
+                <p>Analyzing image...</p>
+            </div>
+
+            <div id="error-message" class="hidden error"></div>
+
+            <div id="result-section" class="hidden">
+                <div class="result-card">
+                    <h2>Classification Result</h2>
+                    <div class="badge" id="class-badge"></div>
+                    <p class="confidence">Confidence: <span id="confidence-val"></span></p>
+                </div>
+                
+                <div class="suggestions-card">
+                    <h3>Recycling Suggestions</h3>
+                    <ul class="suggestion-list">
+                        <li>
+                            <span class="icon">♻️</span>
+                            <div>
+                                <strong>Method:</strong> <span id="method-val"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="icon">💡</span>
+                            <div>
+                                <strong>Tips:</strong> <span id="tips-val"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="icon">🌍</span>
+                            <div>
+                                <strong>Impact:</strong> <span id="impact-val"></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Waste Segregation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="background-elements">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>EcoAI Waste Classifier</h1>
+            <p>Upload an image to classify the waste and get recycling suggestions instantly.</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div id="drop-area" class="drop-area">
+                    <input type="file" id="fileElem" accept="image/*" hidden>
+                    <div class="upload-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    </div>
+                    <h3>Drag & Drop</h3>
+                    <p>or</p>
+                    <button id="browse-btn" class="btn-primary">Browse Image</button>
+                </div>
+                
+                <div id="preview-container" class="hidden">
+                    <img id="image-preview" src="" alt="Image Preview">
+                    <button id="clear-btn" class="btn-secondary">Clear</button>
+                    <button id="predict-btn" class="btn-primary">Classify Waste</button>
+                </div>
+            </div>
+
+            <div id="loading" class="hidden">
+                <div class="spinner"></div>
+                <p>Analyzing image...</p>
+            </div>
+
+            <div id="result-card" class="result-card hidden">
+                <div class="result-header">
+                    <h2>Prediction Result</h2>
+                    <span id="item-detected" class="badge">Item</span>
+                </div>
+                
+                <div class="result-details">
+                    <div class="detail-item">
+                        <span class="label">Category:</span>
+                        <span id="waste-category" class="value category-value">Organic</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Confidence:</span>
+                        <span id="confidence-score" class="value">95%</span>
+                    </div>
+                </div>
+                
+                <div class="suggestion-box">
+                    <h3>Recycling Suggestion</h3>
+                    <p id="recycling-suggestion">Compost this waste or use it for biogas production.</p>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Deep Learning Waste Segregation System</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
